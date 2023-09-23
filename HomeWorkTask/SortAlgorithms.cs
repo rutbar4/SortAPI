@@ -1,9 +1,8 @@
 ﻿namespace HomeWorkTask
 {
-    public class SortAlgorithms
+    public static class SortAlgorithms
     {
-        //static?
-        public void BubbleSort(int[] input)
+        public static int[] BubbleSort(int[] input)
         {
             var itemMoved = false;
             do
@@ -20,11 +19,11 @@
                     }
                 }
             } while (itemMoved);
+            return input;   
         }
 
-        public void InsertionSort(int[] input)
+        public static int[] InsertionSort(int[] input)
         {
-
             for (int i = 0; i < input.Count(); i++)
             {
                 var item = input[i];
@@ -38,9 +37,10 @@
 
                 input[currentIndex] = item;
             }
+            return input;
         }
 
-        public List<int> InsertionSortNew(this List<int> input)
+        public static List<int> InsertionSortNew(this List<int> input)
         {
             var clonedList = new List<int>(input.Count);
 

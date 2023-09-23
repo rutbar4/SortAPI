@@ -1,16 +1,12 @@
+using HomeWorkTask.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeWorkTask.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("v1/[controller]")]
     public class SortController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
         private readonly ILogger<SortController> _logger;
 
         public SortController(ILogger<SortController> logger)
@@ -18,16 +14,15 @@ namespace HomeWorkTask.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpPut(Name = "SortNumbers")]
+        public void Put(int[] numbers)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            int[] sortedNumbers = SortAlgorithms.BubbleSort(numbers);
+            OutUtils.WriteToFile(sortedNumbers);
+            //get numbers that are sent
+            //call methods for action
+              //method sorts numbers
+              //prints to file 
         }
     }
 }
