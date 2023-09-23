@@ -1,5 +1,8 @@
+using HomeWorkTask.DTO;
 using HomeWorkTask.Utils;
+using HomeWorkTask.Utils.SortUtils;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace HomeWorkTask.Controllers
 {
@@ -7,22 +10,31 @@ namespace HomeWorkTask.Controllers
     [Route("v1/[controller]")]
     public class SortController : ControllerBase
     {
-        private readonly ILogger<SortController> _logger;
-
-        public SortController(ILogger<SortController> logger)
+        [HttpPut(Name = "SortNumbers")]
+        public IActionResult Put([FromBody] object requestBody) //needs validation that numbers are 1-10
         {
-            _logger = logger;
+            if (requestBody is null)
+                return BadRequest("Invalid request body. Body was null");
+
+            NumbersDTO? numbers = JsonConvert.DeserializeObject<NumbersDTO>(requestBody.ToString());
+
+
+            if (numbers is null || numbers.Numbers is null) //if left [] doesn't catch
+                return BadRequest("Invalid request body");
+
+            int[] sortedNumbers = SortHandler.sortNumbers(numbers.Numbers);
+
+            OutUtils.WriteToFile(sortedNumbers);
+
+            return Ok(sortedNumbers);
         }
 
-        [HttpPut(Name = "SortNumbers")]
-        public void Put(int[] numbers)
+        [HttpGet(Name = "GetNumbers")]
+        public IActionResult Get() //needs validation that numbers are 1-10
         {
-            int[] sortedNumbers = SortAlgorithms.BubbleSort(numbers);
-            OutUtils.WriteToFile(sortedNumbers);
-            //get numbers that are sent
-            //call methods for action
-              //method sorts numbers
-              //prints to file 
+            int[] resultNumbers = InUtils.ReadResults();
+
+            return Ok(resultNumbers);
         }
     }
 }
