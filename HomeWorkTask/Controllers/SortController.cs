@@ -19,10 +19,14 @@ namespace HomeWorkTask.Controllers
             NumbersDTO? numbers = JsonConvert.DeserializeObject<NumbersDTO>(requestBody.ToString());
 
 
+
             if (numbers is null || numbers.Numbers is null) //if left [] doesn't catch
                 return BadRequest("Invalid request body");
 
-            int[] sortedNumbers = SortHandler.sortNumbers(numbers.Numbers);
+            if (!Validation.IsRangeValid(numbers.Numbers))
+                return BadRequest("Invalid numbers input");
+
+            int[] sortedNumbers = SortHandler.SortNumbers(numbers.Numbers);
 
             OutUtils.WriteToFile(sortedNumbers);
 

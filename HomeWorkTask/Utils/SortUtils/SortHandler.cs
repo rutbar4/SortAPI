@@ -4,7 +4,7 @@ namespace HomeWorkTask.Utils.SortUtils
 {
     public static class SortHandler
     {
-        public static int[] sortNumbers(int[] numbers)
+        public static int[] SortNumbers(int[] numbers)
         {
             var resultBubbleSort = BubbleSortAndTimer(numbers);
             var resultInsetionSort = InsetionSortAndTimer(numbers);
