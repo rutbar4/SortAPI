@@ -1,4 +1,4 @@
-﻿namespace HomeWorkTask
+﻿namespace HomeWorkTask.Utils.SortUtils
 {
     public static class SortAlgorithms
     {
@@ -19,7 +19,7 @@
                     }
                 }
             } while (itemMoved);
-            return input;   
+            return input;
         }
 
         public static int[] InsertionSort(int[] input)

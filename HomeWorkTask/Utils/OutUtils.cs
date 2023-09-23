@@ -4,13 +4,13 @@
     {
         public static void WriteToFile(int[] numbers)
         {
-            string filePath = @"C:\Users\RUTA\Desktop\HW task\HomeWorkTask\HomeWorkTask\Results"; //needs relative path
-            string fileName = "result.txt";
+            var filePath = @"C:\Users\RUTA\Desktop\HW task\HomeWorkTask\HomeWorkTask\Results"; //needs relative path
+            var fileName = "result.txt";
 
-            using (StreamWriter sw = new StreamWriter(Path.Combine(filePath, fileName), true))
+            using (StreamWriter sw = new StreamWriter(Path.Combine(filePath, fileName), false))
             {
                 foreach (int number in numbers)
-                    sw.WriteLine($"{@number} ");
+                    sw.WriteLine(number);
             }
 
         }
