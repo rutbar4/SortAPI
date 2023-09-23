@@ -15,7 +15,7 @@ namespace HomeWorkTask.Utils.SortUtils
 
         private static int[] BubbleSortAndTimer(int[] numbers)
         {
-            var watchBubble = System.Diagnostics.Stopwatch.StartNew();
+            var watchBubble = Stopwatch.StartNew();
 
             var result = SortAlgorithms.BubbleSort(numbers);
             watchBubble.Stop();
@@ -27,7 +27,7 @@ namespace HomeWorkTask.Utils.SortUtils
 
         private static int[] InsrtionSortNewAndTimer(int[] numbers)
         {
-            var watchInsertionSortNew = System.Diagnostics.Stopwatch.StartNew();
+            var watchInsertionSortNew = Stopwatch.StartNew();
 
             var numbersList = numbers.ToList();
             var resultList = SortAlgorithms.InsertionSortNew(numbersList);
@@ -42,7 +42,7 @@ namespace HomeWorkTask.Utils.SortUtils
 
         private static int[] InsetionSortAndTimer(int[] numbers)
         {
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+            var watch = Stopwatch.StartNew();
 
             var result = SortAlgorithms.InsertionSort(numbers);
 
