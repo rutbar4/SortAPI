@@ -1,6 +1,6 @@
 ﻿namespace HomeWorkTask.DTO
 {
-    public class NumbersDTO
+    public class NumbersItem
     {
         public int[]? Numbers { get; set; }
     }

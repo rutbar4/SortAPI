@@ -7,8 +7,8 @@ namespace HomeWorkTask.Utils.SortUtils
         public static int[] SortNumbers(int[] numbers)
         {
             var resultBubbleSort = BubbleSortAndTimer(numbers);
-            var resultInsetionSort = InsetionSortAndTimer(numbers);
-            var resultInsrtionSortNew = InsrtionSortNewAndTimer(numbers);
+            var resultInsetionSort = InsetionSortAndTimer(numbers); //for timer accuracy
+            var resultInsrtionSortNew = InsrtionSortNewAndTimer(numbers); //for timer accuracy
 
             return resultBubbleSort;
         }

@@ -2,7 +2,7 @@
 {
     public static class Validation
     {
-        public static bool IsRangeValid(int[] numbers)
+        public static bool IsRangeValid(int[] numbers) //rename+length
         {
             if (numbers.Length == 0) { return false; }
 

@@ -2,7 +2,7 @@
 {
     public static class SortAlgorithms
     {
-        public static int[] BubbleSort(int[] input)
+        public static int[] BubbleSort(int[] input) //rewrite
         {
             var itemMoved = false;
             do
@@ -40,7 +40,7 @@
             return input;
         }
 
-        public static List<int> InsertionSortNew(this List<int> input)
+        public static List<int> InsertionSortNew(List<int> input)
         {
             var clonedList = new List<int>(input.Count);
 

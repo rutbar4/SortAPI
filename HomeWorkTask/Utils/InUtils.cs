@@ -2,18 +2,17 @@
 {
     public static class InUtils
     {
+        private static readonly string PathSource = Environment.CurrentDirectory.ToString() + @"\Results\result.txt";
+
         public static int[] ReadResults()
         {
-            string pathSource = Environment.CurrentDirectory.ToString() + @"\Results\result.txt";
-            Console.WriteLine(Environment.CurrentDirectory.ToString());
-            
             var numbersList = new List<int>();
-            try
+            try 
             {
-                using (var sr = new StreamReader(pathSource))
+                using (var sr = new StreamReader(PathSource))
                 {
-                    string line;
-                    while((line = sr.ReadLine()) is not null)
+                    string? line;
+                    while ((line = sr.ReadLine()) is not null)
                     {
                         numbersList.Add(int.Parse(line));
                     }
@@ -24,6 +23,7 @@
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
             }
+
             var numbersArray = numbersList.ToArray();
             return numbersArray;
         }
