@@ -4,7 +4,9 @@
     {
         public static int[] ReadResults()
         {
-            string pathSource = @"C:\Users\RUTA\Desktop\HW task\HomeWorkTask\HomeWorkTask\Results\result.txt";
+            string pathSource = Environment.CurrentDirectory.ToString() + @"\Results\result.txt";
+            Console.WriteLine(Environment.CurrentDirectory.ToString());
+            
             var numbersList = new List<int>();
             try
             {

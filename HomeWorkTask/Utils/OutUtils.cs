@@ -4,7 +4,7 @@
     {
         public static void WriteToFile(int[] numbers)
         {
-            var filePath = @"C:\Users\RUTA\Desktop\HW task\HomeWorkTask\HomeWorkTask\Results"; //needs relative path
+            var filePath =  Environment.CurrentDirectory.ToString() + @"\Results"; 
             var fileName = "result.txt";
 
             using (StreamWriter sw = new StreamWriter(Path.Combine(filePath, fileName), false))
