@@ -1,15 +1,24 @@
 ﻿namespace HomeWorkTask.Utils
 {
-    public static class InUtils
+    public static class InOutUtils
     {
-        private static readonly string PathSource = Environment.CurrentDirectory.ToString() + @"\Results\result.txt";
+        private static readonly string _filePath = Environment.CurrentDirectory.ToString() + @"\Results";
+        private static readonly string _fileName = "result.txt";
+        public static void WriteToFile(int[] numbers)
+        {
+            using (StreamWriter sw = new StreamWriter(Path.Combine(_filePath, _fileName), false))
+            {
+                foreach (int number in numbers)
+                    sw.WriteLine(number);
+            }
+        }
 
         public static int[] ReadResults()
         {
             var numbersList = new List<int>();
             try 
             {
-                using (var sr = new StreamReader(PathSource))
+                using (var sr = new StreamReader($@"{_filePath}\{_fileName}"))
                 {
                     string? line;
                     while ((line = sr.ReadLine()) is not null)
