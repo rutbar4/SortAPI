@@ -2,13 +2,6 @@ using HomeWorkTask.DTO;
 using HomeWorkTask.Utils;
 using HomeWorkTask.Utils.SortUtils;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-
-//{
-//    "numbers": [
-//      0
-//  ]
-//}
 
 namespace HomeWorkTask.Controllers
 {
@@ -17,7 +10,7 @@ namespace HomeWorkTask.Controllers
     public class SortController : ControllerBase
     {
         [HttpPost]
-        public IActionResult SortNumbers([FromBody] NumbersItem numbers) //TEST: repeating numbers. numbers with dot
+        public IActionResult SortNumbers([FromBody] NumbersItem numbers)
         {
             if (numbers is null || numbers.Numbers is null)
                 return BadRequest("Invalid request body");
