@@ -30,7 +30,7 @@ namespace HomeWorkTask.Utils.SortUtils
             var watchInsertionSortNew = Stopwatch.StartNew();
 
             var numbersList = numbers.ToList();
-            var resultList = SortAlgorithms.InsertionSortNew(numbersList);
+            var resultList = SortAlgorithms.InsertionSort(numbersList);
 
             watchInsertionSortNew.Stop();
             var elapsedMsInsertionSortNew = watchInsertionSortNew.Elapsed.TotalMilliseconds;

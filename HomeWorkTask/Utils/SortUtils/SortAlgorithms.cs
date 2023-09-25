@@ -17,9 +17,9 @@
             return input;
         }
 
-        public static int[] InsertionSort(int[] input)
+        public static int[] InsertionSort(int[] input) //copied
         {
-            for (int i = 0; i < input.Count(); i++)
+            for (int i = 0; i < input.Length; i++)
             {
                 var item = input[i];
                 var currentIndex = i;
@@ -35,7 +35,7 @@
             return input;
         }
 
-        public static List<int> InsertionSortNew(List<int> input)
+        public static List<int> InsertionSort(List<int> input) //copied
         {
             var clonedList = new List<int>(input.Count);
 
