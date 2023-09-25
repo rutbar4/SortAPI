@@ -2,23 +2,18 @@
 {
     public static class SortAlgorithms
     {
-        public static int[] BubbleSort(int[] input) //rewrite
+        public static int[] BubbleSort(int[] input)
         {
-            var itemMoved = false;
-            do
+            for (int i = 0; i < input.Length-1; i++)
             {
-                itemMoved = false;
-                for (int i = 0; i < input.Count() - 1; i++)
+                for (int j = i+1; j < input.Length; j++)
                 {
-                    if (input[i] > input[i + 1])
+                    if (input[i] > input[j])
                     {
-                        var lowerValue = input[i + 1];
-                        input[i + 1] = input[i];
-                        input[i] = lowerValue;
-                        itemMoved = true;
+                        (input[j], input[i]) = (input[i], input[j]);
                     }
                 }
-            } while (itemMoved);
+            }
             return input;
         }
 
