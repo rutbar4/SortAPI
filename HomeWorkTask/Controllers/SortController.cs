@@ -27,7 +27,7 @@ namespace HomeWorkTask.Controllers
 
             int[] sortedNumbers = SortHandler.SortNumbers(numbers.Numbers);
 
-            OutUtils.WriteToFile(sortedNumbers);
+            InOutUtils.WriteToFile(sortedNumbers);
 
             return Ok(sortedNumbers);
         }
@@ -35,7 +35,7 @@ namespace HomeWorkTask.Controllers
         [HttpGet]
         public IActionResult Numbers()
         {
-            int[] resultNumbers = InUtils.ReadResults();
+            int[] resultNumbers = InOutUtils.ReadResults();
 
             return Ok(resultNumbers);
         }
