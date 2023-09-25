@@ -4,7 +4,7 @@ namespace UnitTests.ControllersUnitTests
 {
     public class Tests
     {
-        private readonly int[] _inputNumbers = { 3, 1, 2, 40, 25, -3, -100 };
+        private readonly int[] _inputNumbers = { 3, 1, 2, 40, 2, 25, -3, -100 };
 
         [Test]
         public void BubbleSort_NumbersArray_IsCorrectlyOrdered()
