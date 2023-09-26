@@ -11,7 +11,7 @@ namespace Tests.UnitTests
             int[] validInput = { 3, 2, 9, 4, 1, 10 };
 
             // Act
-            var result = Validation.IsRangeValid(validInput);
+            var result = Validation.IsRangeAndLengthValid(validInput);
 
             // Assert
             Assert.That(result, Is.True);
@@ -23,7 +23,7 @@ namespace Tests.UnitTests
         public void IsRangeValid_WrongRange_false(int[] invalidInput)
         {
             // Act
-            var result = Validation.IsRangeValid(invalidInput);
+            var result = Validation.IsRangeAndLengthValid(invalidInput);
 
             // Assert
             Assert.That(result, Is.False);

@@ -15,7 +15,7 @@ namespace HomeWorkTask.Controllers
             if (numbers is null || numbers.Numbers is null)
                 return BadRequest("Invalid request body");
 
-            if (!Validation.IsRangeValid(numbers.Numbers))
+            if (!Validation.IsRangeAndLengthValid(numbers.Numbers))
                 return BadRequest("Invalid numbers input");
 
             var sortedNumbers = SortHandler.SortNumbers(numbers);
