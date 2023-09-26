@@ -1,33 +1,38 @@
+using HomeWorkTask.DTO;
+using HomeWorkTask.Utils;
+using HomeWorkTask.Utils.SortUtils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeWorkTask.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("v1/[controller]")]
     public class SortController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
+        [HttpPost]
+        public IActionResult SortNumbers([FromBody] NumbersItem numbers)
         {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+            if (numbers is null || numbers.Numbers is null)
+                return BadRequest("Invalid request body");
 
-        private readonly ILogger<SortController> _logger;
+            if (!Validation.IsRangeAndLengthValid(numbers.Numbers))
+                return BadRequest("Invalid numbers input");
 
-        public SortController(ILogger<SortController> logger)
-        {
-            _logger = logger;
+            var sortedNumbers = SortHandler.SortNumbers(numbers);
+
+            InOutUtils.WriteToFile(sortedNumbers);
+
+            return Ok(sortedNumbers);
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet]
+        public IActionResult Numbers()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            var resultNumbers = InOutUtils.ReadResults();
+
+            if (resultNumbers is null) return NotFound("File does not exist");
+
+            return Ok(resultNumbers);
         }
     }
 }
