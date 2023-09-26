@@ -26,7 +26,7 @@ namespace HomeWorkTask.Controllers
         }
 
         [HttpGet]
-        public IActionResult Numbers()
+        public IActionResult SortedNumbers()
         {
             var resultNumbers = InOutUtils.ReadResults();
 
