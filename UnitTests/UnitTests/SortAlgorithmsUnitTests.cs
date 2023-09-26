@@ -10,7 +10,7 @@ namespace UnitTests.ControllersUnitTests
         public void BubbleSort_NumbersArray_IsCorrectlyOrdered()
         {
             // Act
-            var outputNumbers = SortAlgorithms.BubbleSort(_inputNumbers);  
+            var outputNumbers = SortAlgorithms.BubbleSort(_inputNumbers);
 
             // Assert
             Assert.That(outputNumbers, Has.Length.EqualTo(_inputNumbers.Length));
@@ -26,13 +26,12 @@ namespace UnitTests.ControllersUnitTests
             // Assert
             Assert.That(outputNumbers, Has.Length.EqualTo(_inputNumbers.Length));
             Assert.That(outputNumbers, Is.Ordered);
-
         }
 
         [Test]
         public void InsertionSortNew_NumbersList_IsCorrectlyOrdered()
         {
-            // Arrange 
+            // Arrange
             var inputNumbersList = _inputNumbers.ToList();
 
             // Act

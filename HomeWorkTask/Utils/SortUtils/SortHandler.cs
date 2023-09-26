@@ -1,16 +1,19 @@
-﻿using System.Diagnostics;
+﻿using HomeWorkTask.DTO;
+using System.Diagnostics;
 
 namespace HomeWorkTask.Utils.SortUtils
 {
     public static class SortHandler
     {
-        public static int[] SortNumbers(int[] numbers)
+        public static NumbersItem SortNumbers(NumbersItem numbersItem)
         {
-            var resultBubbleSort = BubbleSortAndTimer(numbers);
-            var resultInsetionSort = InsetionSortAndTimer(numbers); //for timer accuracy
-            var resultInsrtionSortNew = InsrtionSortNewAndTimer(numbers); //for timer accuracy
+            var numbers = numbersItem.Numbers ?? Array.Empty<int>();
 
-            return resultBubbleSort;
+            var resultBubbleSort = BubbleSortAndTimer(numbers);
+            var resultInsetionSort = InsertionSortAndTimer(numbers); //for timer accuracy
+            var resultInsrtionSortNew = InsertionSortNewAndTimer(numbers); //for timer accuracy
+
+            return new NumbersItem() { Numbers = resultBubbleSort };
         }
 
         private static int[] BubbleSortAndTimer(int[] numbers)
@@ -25,7 +28,7 @@ namespace HomeWorkTask.Utils.SortUtils
             return result;
         }
 
-        private static int[] InsrtionSortNewAndTimer(int[] numbers)
+        private static int[] InsertionSortNewAndTimer(int[] numbers)
         {
             var watchInsertionSortNew = Stopwatch.StartNew();
 
@@ -40,7 +43,7 @@ namespace HomeWorkTask.Utils.SortUtils
             return result;
         }
 
-        private static int[] InsetionSortAndTimer(int[] numbers)
+        private static int[] InsertionSortAndTimer(int[] numbers)
         {
             var watch = Stopwatch.StartNew();
 

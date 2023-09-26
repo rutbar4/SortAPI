@@ -4,9 +4,9 @@
     {
         public static int[] BubbleSort(int[] input)
         {
-            for (int i = 0; i < input.Length-1; i++)
+            for (int i = 0; i < input.Length - 1; i++)
             {
-                for (int j = i+1; j < input.Length; j++)
+                for (int j = i + 1; j < input.Length; j++)
                 {
                     if (input[i] > input[j])
                     {
@@ -17,7 +17,7 @@
             return input;
         }
 
-        public static int[] InsertionSort(int[] input) //copied
+        public static int[] InsertionSort(int[] input)
         {
             for (int i = 0; i < input.Length; i++)
             {
@@ -35,7 +35,7 @@
             return input;
         }
 
-        public static List<int> InsertionSort(List<int> input) //copied
+        public static List<int> InsertionSort(List<int> input)
         {
             var clonedList = new List<int>(input.Count);
 

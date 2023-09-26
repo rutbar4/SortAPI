@@ -1,39 +1,35 @@
-﻿namespace HomeWorkTask.Utils
+﻿using HomeWorkTask.DTO;
+
+namespace HomeWorkTask.Utils
 {
     public static class InOutUtils
     {
-        private static readonly string _filePath = Environment.CurrentDirectory.ToString() + @"\Results";
-        private static readonly string _fileName = "result.txt";
-        public static void WriteToFile(int[] numbers)
+        private static readonly string _filePath = Environment.CurrentDirectory.ToString() + @"\Results\result.txt";
+
+        public static void WriteToFile(NumbersItem numbersItem)
         {
-            using (StreamWriter sw = new StreamWriter(Path.Combine(_filePath, _fileName), false))
+            if (numbersItem.Numbers is not null)
             {
-                foreach (int number in numbers)
+                using StreamWriter sw = new(_filePath, false);
+                foreach (int number in numbersItem.Numbers)
                     sw.WriteLine(number);
             }
         }
 
-        public static int[] ReadResults()
+        public static NumbersItem? ReadResults()
         {
+            if (!File.Exists(_filePath))
+                return null;
+
             var numbersList = new List<int>();
-            try 
+            string[] lines = File.ReadAllLines(_filePath);
+
+            foreach (string line in lines)
             {
-                using (var sr = new StreamReader($@"{_filePath}\{_fileName}"))
-                {
-                    string? line;
-                    while ((line = sr.ReadLine()) is not null)
-                    {
-                        numbersList.Add(int.Parse(line));
-                    }
-                }
-            }
-            catch (IOException e)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
+                numbersList.Add(int.Parse(line));
             }
 
-            var numbersArray = numbersList.ToArray();
+            var numbersArray = new NumbersItem() { Numbers = numbersList.ToArray() };
             return numbersArray;
         }
     }

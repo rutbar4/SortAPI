@@ -18,7 +18,7 @@ namespace HomeWorkTask.Controllers
             if (!Validation.IsRangeValid(numbers.Numbers))
                 return BadRequest("Invalid numbers input");
 
-            int[] sortedNumbers = SortHandler.SortNumbers(numbers.Numbers);
+            var sortedNumbers = SortHandler.SortNumbers(numbers);
 
             InOutUtils.WriteToFile(sortedNumbers);
 
@@ -28,7 +28,9 @@ namespace HomeWorkTask.Controllers
         [HttpGet]
         public IActionResult Numbers()
         {
-            int[] resultNumbers = InOutUtils.ReadResults();
+            var resultNumbers = InOutUtils.ReadResults();
+
+            if (resultNumbers is null) return NotFound("File does not exist");
 
             return Ok(resultNumbers);
         }
