@@ -19,7 +19,9 @@ namespace HomeWorkTask.Utils
         public static NumbersItem? ReadResults()
         {
             if (!File.Exists(_filePath))
+            {
                 return null;
+            }
 
             var numbersList = new List<int>();
             string[] lines = File.ReadAllLines(_filePath);

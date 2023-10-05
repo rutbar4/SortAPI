@@ -13,10 +13,14 @@ namespace HomeWorkTask.Controllers
         public IActionResult SortNumbers([FromBody] NumbersItem numbers)
         {
             if (numbers is null || numbers.Numbers is null)
+            {
                 return BadRequest("Invalid request body");
+            }
 
             if (!Validation.IsRangeAndLengthValid(numbers.Numbers))
+            {
                 return BadRequest("Invalid numbers input");
+            }
 
             var sortedNumbers = SortHandler.SortNumbers(numbers);
 
@@ -30,7 +34,7 @@ namespace HomeWorkTask.Controllers
         {
             var resultNumbers = InOutUtils.ReadResults();
 
-            if (resultNumbers is null) return NotFound("File does not exist");
+            if (resultNumbers is null) { return NotFound("File does not exist"); }
 
             return Ok(resultNumbers);
         }
